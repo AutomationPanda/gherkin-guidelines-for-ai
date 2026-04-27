@@ -11,7 +11,6 @@ Feed it as context to AI specs, agents, and skills to generate scenarios for acc
 1. **Get the file.** Copy [`gherkin-guidelines.md`](gherkin-guidelines.md) into your project.
 2. **Give it to the agent.** Paste the full contents into a chat, add it as project context, or reference it in a prompt (for example, `@gherkin-guidelines.md` in Cursor).
 3. **Prompt with scope.** Ask for a `*.feature` (or scenarios) and name the product area, actors, and the behaviors or acceptance criteria you want covered.
-4. **Optional:** Point the agent at the **Recommended template** section in `gherkin-guidelines.md` if you want a skeleton structure as a starting point.
 
 
 ## Choices
