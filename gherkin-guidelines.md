@@ -42,8 +42,11 @@ This guidance assumes **Cucumber-compatible Gherkin**. Reference: https://cucumb
   - `Scenario Outline`
   - `Examples`
 - **SHOULD** keep lines under **120 characters**.
-- **SHOULD** separate major sections with **one blank line**.
-- **MUST NOT** put blank lines *between steps* within a scenario or background.
+- **Vertical whitespace** (keep these together when editing a file):
+  - **SHOULD** separate major sections with **one blank line**.
+  - **SHOULD** put **one blank line** between adjacent `Scenario` / `Scenario Outline` blocks for
+    readability and cleaner diffs.
+  - **MUST NOT** put blank lines *between steps* within a scenario or background.
 - **SHOULD** avoid comments; the scenario text should be self-explanatory.
 
 ---
@@ -85,8 +88,26 @@ This guidance assumes **Cucumber-compatible Gherkin**. Reference: https://cucumb
 - **MUST** be chronologically executable step-by-step.
 - **SHOULD** be declarative rather than imperative.
 - **MUST** focus on behavior concerns; step definitions (automation code) handle implementation details.
+- **SHOULD** keep steps at a **domain / business level of abstraction**: describe what actors do and
+  what the system does in **product language**, not in framework or plumbing terms.
 - **MUST NOT** leak automation or UI mechanics into steps (for example: selectors, XPath, "wait for,"
   "scroll to," "click element #foo") unless the behavior under test is truly about that mechanic.
+- **MUST NOT** put HTTP endpoints, SQL, internal schema, or raw storage mechanics in step text unless
+  the **behavior being specified** is inherently at that layer (for example, a service exposed only as
+  an API).
+- **SHOULD** prefer **state over navigation**: describe meaningful starting states (for example,
+  "Given the user is signed in with role \"Editor\"") instead of imperative UI tours through every
+  click and field, unless the **interaction path** is what this scenario is meant to specify.
+- **SHOULD** use **minimal but sufficient** `Given` context: include only preconditions a reader needs
+  to understand the behavior; omit unrelated setup that does not change the meaning of the example.
+- **MUST NOT** bundle **multiple independent quality concerns** in one scenario (for example, core
+  functional behavior together with performance, accessibility, or unrelated security checks) unless
+  the scenario title and steps explicitly specify **one** behavior that legitimately spans those
+  concerns. Otherwise split into separate scenarios.
+- **SHOULD** use **concrete, realistic** example values in steps and tables (names, amounts, dates,
+  realistic identifiers) so the scenario reads as a believable example.
+- **SHOULD NOT** use meaningless placeholder data (`foo`, `bar`, `test`, `lorem`) unless the scenario
+  is intentionally about generic, invalid, or deliberately nonsensical input.
 - **SHOULD** target **< 10 steps**. If longer, consider splitting behaviors or using tables.
 
 ### Scenario Outline usage
@@ -146,8 +167,14 @@ This guidance assumes **Cucumber-compatible Gherkin**. Reference: https://cucumb
 ## Common anti-patterns (avoid)
 
 - Mixing multiple behaviors into one scenario (multiple unrelated actions or assertions).
+- Mixing unrelated **concerns** in one scenario (for example, happy-path functionality plus load time
+  or unrelated accessibility rules) when they deserve separate specifications.
 - Encoding UI implementation details (selectors, DOM structure) into step text.
+- Over-specifying navigation and clicks when **state** would communicate the same precondition more
+  clearly.
+- Bloated `Given` chains that set up context the scenario never needs.
 - Vague assertions ("it works", "it succeeds", "the user is logged in" without an observable signal).
+- Placeholder example data (`foo` / `bar`) that does not read like a real specification example.
 - Overusing `Scenario Outline` to generate many rows without distinct behavioral value.
 - Extremely long scenarios or tables that no human will read or will seem like a [wall of text](https://en.wikipedia.org/wiki/Wikipedia:Wall_of_text).
 
@@ -157,10 +184,16 @@ This guidance assumes **Cucumber-compatible Gherkin**. Reference: https://cucumb
 
 Before finalizing a scenario, verify:
 - [ ] One behavior only; can run independently
+- [ ] No unrelated concerns bundled (split functional vs performance, a11y, etc. when separate)
 - [ ] Stable vocabulary (no synonym swapping)
+- [ ] Domain-level abstraction; no unnecessary UI/API/DB plumbing in steps
+- [ ] State over navigation where it keeps the scenario clearer
+- [ ] Minimal but sufficient `Given` context
+- [ ] Concrete, realistic example data (not generic placeholders)
 - [ ] Steps are third-person, present tense, subject–predicate
 - [ ] Strict Given → When → Then order; `Then` outcomes are observable
 - [ ] No UI/automation mechanics leaked into steps
+- [ ] Blank line between scenarios in the same file
 - [ ] Scenario is short (ideally < 10 steps); tables fit on one screen
 
 ---
