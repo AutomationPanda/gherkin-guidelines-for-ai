@@ -218,4 +218,14 @@ Feature: <behavior area>
     And <continued action>
     Then <observable outcome>
     And <additional observable outcome>
+
+  Scenario Outline: <same behavior, varying inputs>
+    Given <context>
+    When <action> with "<input>"
+    Then the outcome is "<outcome>"
+
+    Examples:
+      | input   | outcome   |
+      | <case1> | <result1> |
+      | <case2> | <result2> |
 ```
