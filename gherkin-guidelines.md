@@ -8,7 +8,7 @@ The goals are:
 - **Deterministic** enough for LLMs to follow
 - **Automation-ready** without leaking implementation details
 
-This guidance assumes **Cucumber-compatible Gherkin**. Reference: https://cucumber.io/docs/gherkin/reference/
+This guidance assumes **Cucumber-compatible Gherkin** (the "Queen's Gherkin"). Reference: https://cucumber.io/docs/gherkin/reference/
 
 ---
 
