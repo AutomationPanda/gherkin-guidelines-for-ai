@@ -1,4 +1,4 @@
-# Gherkin Guidelines (Human + LLM Friendly)
+# Gherkin Guidelines
 
 This document is a **context contract** for writing, reviewing, and maintaining Gherkin feature files that serve as
 **living documentation** and **specification by example**.
