@@ -29,7 +29,7 @@ To select an alternative, edit [`gherkin-guidelines.md`](gherkin-guidelines.md) 
 | *Indentation* | 2 spaces | 4 spaces or tabs |
 | *Blank lines* | 1 line between sections | Other line spacing rules |
 
-> [NOTE]
+> [!NOTE]
 > For a specific Gherkin dialect, you may need to provide examples of syntax
 > or even a full language spec for AI to use it properly.
 
@@ -50,7 +50,7 @@ There are multiple ways that you could integrate it with AI coding techniques:
 
 - **Context engineering:** Create a body of context files that document how the project should be developed. Hook it up to rules, skills, and sub-agents. Add the guidelines to the context files.
 
-> [IMPORTANT]
+> [!IMPORTANT]
 > Each coding agent has different ways to establish rules and set up context.
 > Be sure to read their docs so you know how to set things up properly.
 > Otherwise, the agents might ignore these Gherkin guidelines!
