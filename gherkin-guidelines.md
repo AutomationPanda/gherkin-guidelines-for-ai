@@ -219,6 +219,14 @@ Feature: <behavior area>
     Then <observable outcome>
     And <additional observable outcome>
 
+  Scenario: <single behavior using a step data table>
+    Given the following <domain entities> exist:
+      | <column-a> | <column-b> |
+      | <value 1>  | <value 2>  |
+      | <value 3>  | <value 4>  |
+    When <action>
+    Then <observable outcome>
+
   Scenario Outline: <same behavior, varying inputs>
     Given <context>
     When <action> with "<input>"
