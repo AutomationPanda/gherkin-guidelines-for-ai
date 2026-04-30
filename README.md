@@ -9,7 +9,7 @@ Feed it as context to AI specs, agents, and skills to generate scenarios for acc
 ## Quick start
 
 1. **Get the file.** Copy [`gherkin-guidelines.md`](gherkin-guidelines.md) into your project.
-2. **Give it to the agent.** Paste the full contents into a chat, add it as project context, or reference it in a prompt (for example, `@gherkin-guidelines.md` in Cursor).
+2. **Give it to the agent.** Paste the full contents into a chat, add it as project context, create rules or skills that point to it, or reference it in a prompt (for example, `@gherkin-guidelines.md` in Cursor).
 3. **Prompt with scope.** Ask for a `*.feature` (or scenarios) and name the product area, actors, and the behaviors or acceptance criteria you want covered.
 
 
@@ -49,6 +49,9 @@ There are multiple ways that you could integrate it with AI coding techniques:
 - **Skills or sub-agents:** Convert this document into a skill or sub-agent and provide it to your AI coding agent.
 
 - **Context engineering:** Create a body of context files that document how the project should be developed. Hook it up to rules, skills, and sub-agents. Add the guidelines to the context files.
+
+If you are not sure about the best way to incorporate this context file into your project,
+simply ask your AI coding agent for what it thinks would be best.
 
 > [!IMPORTANT]
 > Each coding agent has different ways to establish rules and set up context.
