@@ -237,3 +237,27 @@ Feature: <behavior area>
       | <case1> | <result1> |
       | <case2> | <result2> |
 ```
+
+---
+
+## Cross-file consistency
+
+These rules extend the original guidelines for projects managing multiple feature files.
+
+### Cross-file rules
+
+- **MUST NOT** define conflicting behavior for the same domain concept across specs (e.g., different timeout values, contradictory validation rules, incompatible state transitions).
+- **MUST NOT** re-spec a behavior in another file with different wording. Reference the existing spec or consolidate.
+- **SHOULD** ensure each behavior is owned by exactly one feature file. If multiple features touch the same domain object, their scenarios **MUST** cover distinct behaviors, not overlapping ones.
+
+### Additional anti-patterns
+
+- Contradictory specs across files: two features specifying conflicting outcomes for the same action or domain rule.
+- Duplicate scenarios across files: same behavior specced in multiple feature files using different wording (vocabulary drift symptom).
+- Ambiguous outcomes: `Then` steps that two reasonable readers could interpret differently, or that cannot be verified without additional context.
+
+### Additional checklist items
+
+- [ ] No contradictions with existing specs
+- [ ] No duplicate scenarios covering the same behavior in other files
+- [ ] Vocabulary consistent with existing specs
